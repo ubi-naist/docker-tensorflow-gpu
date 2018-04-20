@@ -45,9 +45,12 @@ dockerコンテナ上でtensorflow-gpuを動作させ、JupyterNotebookを立ち
     $ cd docker-tensorflow-gpu
     $ cp .env.example .env
     $ nano .env
-パスワードを変更 PASSWORD=XXXX
+- パスワードを変更 PASSWORD=XXXX
+- プロジェクト名を変更　COMPOSE_PROJECT_NAME=XXXX
+
 
     $ nano docker-compose.yml
-ポート番号を変更 5000→XXXX
+- ポート番号を変更 5000→XXXX
+
 
     $ docker-compose up
