@@ -7,6 +7,16 @@ services:
     restart: always
     env_file: .env
     ports:
-      - "5000:8888"
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/notebooks
+
+  tensorboard:
+    build: .
+    runtime: nvidia
+    restart: always
+    command: tensorboard --logdir=/notebooks/logs
+    ports:
+      - "6006:6006"
     volumes:
       - ./notebooks:/notebooks

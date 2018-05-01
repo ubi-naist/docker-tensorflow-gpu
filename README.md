@@ -50,6 +50,6 @@ dockerコンテナ上でtensorflow-gpuを動作させ、JupyterNotebookを立ち
 プロジェクト名を変更　COMPOSE_PROJECT_NAME=XXXX
 
     $ nano docker-compose.yml
-ポート番号を変更 5000→XXXX
+ホスト側（左）のポート番号を変更 8888→XXXX, 6006→XXXX
 
     $ docker-compose up
