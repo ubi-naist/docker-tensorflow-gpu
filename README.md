@@ -30,6 +30,7 @@ dockerコンテナ上でtensorflow-gpuを動作させ、JupyterNotebookを立ち
 
 ### dockerグループに追加
     $ sudo gpasswd -a ユーザ docker
+
 再ログイン
 
 ### nvidia-docker2
@@ -44,12 +45,40 @@ dockerコンテナ上でtensorflow-gpuを動作させ、JupyterNotebookを立ち
     $ git clone https://github.com/ubi-naist/docker-tensorflow-gpu.git
     $ cd docker-tensorflow-gpu
     $ cp .env.example .env
-    $ nano .env
-パスワードを変更 PASSWORD=XXXX
 
-プロジェクト名を変更　COMPOSE_PROJECT_NAME=XXXX
+パスワードを変更 PASSWORD=XXXX<br>
+プロジェクト名を変更 COMPOSE_PROJECT_NAME=XXXX
+
+    $ nano .env
+
+ホスト側（左）のポート番号を変更 8888→XXXX
 
     $ nano docker-compose.yml
-ホスト側（左）のポート番号を変更 8888→XXXX, 6006→XXXX
 
-    $ docker-compose up
+起動
+
+    $ docker-compose up -d
+
+指定したポートにブラウザでアクセス
+
+## Tensorboardを使用する場合
+tensorboard用ポートのコメントアウトを外し、<br>
+ホスト側（左）のポート番号を変更 6006→XXXX
+
+    $ nano docker-compose.yml
+
+コンテナの再起動
+
+    $ docker-compose build
+    $ docker-compose up -d
+
+コンテナ名を確認
+
+    $ docker ps
+
+tensorboardを起動
+
+    $ docker exec -it コンテナ名 /bin/bash
+    $ tensorboard --logdir=ログファイルを格納しているディレクトリ
+
+指定したポートにブラウザでアクセス
