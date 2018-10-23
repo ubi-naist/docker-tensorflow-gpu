@@ -1,7 +1,7 @@
 FROM tensorflow/tensorflow:latest-gpu-py3
 
 RUN apt-get update && apt-get install -y \
-    graphviz
+    git graphviz
 
 RUN pip install --upgrade pip
 
